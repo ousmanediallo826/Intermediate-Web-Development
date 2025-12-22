@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.app {
+    max-width: 160%;
+    margin: 0 auto;
+}
+.container {
+  background-image: url('/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 120%;
+  margin-top: 40px;
+}
+
+.card {
+  background-color: aliceblue;
+}
