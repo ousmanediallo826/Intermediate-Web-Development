@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import "../App.css"
-const Card = () => {
-  const [title, setTitle] = useState('');
+import React, { useState } from 'react';
+import "../App.css";
 
+const Card = () => {
   const words = {
     Resilience: "The capacity to recover quickly from difficulties or setbacks.",
     Innovation: "The act of creating new ideas, methods, or products.",
@@ -25,18 +24,39 @@ const Card = () => {
     Bandwidth: "Maximum data capacity.",
     Analytics: "Data analysis to gain insight."
   };
-function handleClick() {
-  const randomWord = Object.keys(words)[Math.floor(Math.random() * Object.keys(words).length)];
-  setTitle(randomWord);
-}
 
+  const wordList = Object.keys(words);
+  const [index, setIndex] = useState(0);  
+  const [titleShow, setTitleShow] = useState(true);
+
+  const title = wordList[index];
+
+  function handleNext() {
+    setIndex((prev) => (prev + 1) % wordList.length);
+    setTitleShow(true); // reset to title when switching cards
+  }
+
+  function handlePrev() {
+    setIndex((prev) => (prev - 1 + wordList.length) % wordList.length);
+    setTitleShow(true); // reset to title when switching cards
+  }
+
+  function titleShowoff() {
+    setTitleShow(prev => !prev);
+  }
 
   return (
     <div className='card'>
-      <h1>{title}</h1>
-      <p>{words[title]}</p>
-      <button onClick={handleClick}>New Word</button>
+      <div onClick={titleShowoff} style={{ cursor: "pointer" }}>
+        {titleShow ? (
+          <h1>{title}</h1>
+        ) : (
+          <p>{words[title]}</p>
+        )}
+      </div>
 
+      <button onClick={handlePrev}>Prev Word</button>
+      <button onClick={handleNext}>Next Word</button>
     </div>
   );
 };

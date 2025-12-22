@@ -8,9 +8,9 @@ const App = () => {
        <h1>The Ultimate Plant Parent</h1>
        <p>How good of a plant are you? Test all of your planty knowledge here!</p>
        <h3>Number of cards:</h3>
-       <div className='card'>
+    
        <Card />
-       </div>
+       
        </div>
     </div>
   )
